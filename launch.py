@@ -51,7 +51,7 @@ class webui:
         if self.df is None:
             self.divide_layer()
 
-    def launch(self, share):
+    def launch(self, share, port=7777):
         with self.demo:
             with gr.Row():
                 with gr.Column():
@@ -85,7 +85,7 @@ class webui:
             )
 
         self.demo.queue()
-        self.demo.launch(share=share)
+        self.demo.launch(share=share, server_port=port)
 
 
 if __name__ == "__main__":
