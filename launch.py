@@ -89,11 +89,12 @@ class webui:
 
 
 if __name__ == "__main__":
+    import argparse
     ui = webui()
-    if len(sys.argv) > 1:
-        if sys.argv[1] == "share":
-            ui.launch(share=True)
-        else:
-            ui.launch(share=False)
-    else:
-        ui.launch(share=False)
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--share', action='store_true')
+    parser.add_argument('--port', type=int, default=7777)
+    args = parser.parse_args()
+
+    ui.launch(share=args.share, port=args.port)
